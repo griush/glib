@@ -1,0 +1,41 @@
+// Prints Hello, world!
+// Mage by griush
+push 72
+printc
+pop
+push 101
+printc
+pop
+push 108
+printc
+pop
+push 108
+printc
+pop
+push 111
+printc
+pop
+push 44
+printc
+pop
+push 32
+printc
+pop
+push 119
+printc
+pop
+push 111
+printc
+pop
+push 114
+printc
+pop
+push 108
+printc
+pop
+push 100
+printc
+pop
+push 33
+printc
+pop
