@@ -51,7 +51,7 @@ void print_version() {
     printf("Glib %s", GL_VERSION);
 }
 
-int execute(const std::string& command) {
+int execute(const std::string& command, const int& line) {
     std::string tmp; 
     std::stringstream ss(command);
     std::vector<std::string> tokens;
@@ -62,7 +62,7 @@ int execute(const std::string& command) {
 
     if (tokens[0] == "push") {
         if (tokens.size() == 1) {
-            GL_SYNTAX_ERROR_MSG("No argument given", tokens[0].c_str());
+            GL_SYNTAX_ERROR_MSG("No argument given", tokens[0].c_str(), line);
         } else {
             gl_push(std::stoi(tokens[1]));
         }
@@ -75,6 +75,18 @@ int execute(const std::string& command) {
         if (isPropmptActive == 1) {
             printf("\n");
         }
+    }
+    else if (tokens[0] == "input") {
+        if (isPropmptActive == 0)
+            gl_input();
+        else
+            GL_SYNTAX_ERROR_MSG("input is only available for files", tokens[0].c_str(), line);
+    }
+    else if (tokens[0] == "inputc") {
+        if (isPropmptActive == 0)
+            gl_inputc();
+        else
+            GL_SYNTAX_ERROR_MSG("input is only available for files", tokens[0].c_str(), line);
     }
     else if (tokens[0] == "pop") {
         gl_pop();
@@ -99,14 +111,14 @@ int execute(const std::string& command) {
     } 
     else if (tokens[0] == "jmp") {
         if (tokens.size() == 1) {
-            GL_SYNTAX_ERROR_MSG("No argument given", tokens[0].c_str());
+            GL_SYNTAX_ERROR_MSG("No argument given", tokens[0].c_str(), line);
         } else {
             return std::stoi(tokens[1]);
         }
     }
     else if (tokens[0] == "ifeq") {
         if (tokens.size() != 3) {
-            GL_SYNTAX_ERROR_MSG("Invalid argument count given", tokens[0].c_str());
+            GL_SYNTAX_ERROR_MSG("Invalid argument count given", tokens[0].c_str(), line);
         } else {
             if (gl_peek() == stoi(tokens[1])) {
                 // Continue
@@ -119,7 +131,7 @@ int execute(const std::string& command) {
         return -1;
     }
     else {
-        GL_SYNTAX_ERROR_MSG("Unknown token", tokens[0].c_str());
+        GL_SYNTAX_ERROR_MSG("Unknown token", tokens[0].c_str(), line);
     }
 
     return -1;
@@ -139,7 +151,7 @@ void execute_file(const std::string& filepath) {
         file.close();
 
         for (int i = 0; i < lines.size(); i++) {
-            int n = execute(lines[i]);
+            int n = execute(lines[i], i+1);
             if (n > 0) {
                 i = n-2;
             }
@@ -155,7 +167,7 @@ void command_prompt() {
         std::string command;
         std::getline(std::cin, command);
         if (command != "exit")
-            execute(command);
+            execute(command, 0);
         else
             isPropmptActive = 0;
     }

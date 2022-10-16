@@ -1,0 +1,6 @@
+// Square a number given by the user
+// Made by griush
+input
+dup
+mul
+print

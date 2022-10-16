@@ -12,7 +12,8 @@ OUTPUT:
 [X] printc                  : print the ASCII character decimal value at the top of the stack
 
 INPUT:
-[ ] input                   : asks for user input, and push on top of the stack
+[X] input                   : asks for user input, and push it on top of the stack
+[X] inputc                  : asks for user input (char), and push its decimal ASCII value on top of the stack
 
 CONTROL:
 [X] jump <address>          : jump to a line number

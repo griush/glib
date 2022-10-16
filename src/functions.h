@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "errors.h"
 
 #ifndef _STACK_H_
@@ -33,7 +35,7 @@ int gl_isFull() {
     }
 }
 
-int gl_push(int val) {
+int gl_push(const int& val) {
     if (gl_isFull()) {
         GL_RUNTIME_ERROR_MSG("Cannot push, stack is full!");
         return GL_RUNTIME_ERROR;
@@ -75,6 +77,18 @@ void gl_printc() {
         printf("%c", char(gl_peek()));
     else
         GL_RUNTIME_ERROR_MSG("Cannot print, stack is empty!");
+}
+
+void gl_input() {
+    int n;
+    std::cin >> n;
+    gl_push(n);
+}
+
+void gl_inputc() {
+    char n;
+    std::cin >> n;
+    gl_push(int(n));
 }
 
 int gl_add() {

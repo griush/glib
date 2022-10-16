@@ -1,5 +1,5 @@
 // Prints Hello, world!
-// Mage by griush
+// Made by griush
 push 72
 printc
 pop
