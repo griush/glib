@@ -1,0 +1,8 @@
+// Print all even numbers to 100
+// Made by griush
+push 0
+print
+inc
+inc
+print
+ifeq 100 3

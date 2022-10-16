@@ -1,0 +1,9 @@
+// Fibonacci sequence until 233
+// Made by griush
+push 1
+print
+push 2
+print
+add
+print
+ifeq 233 5
