@@ -6,4 +6,4 @@ push 2
 print
 add
 print
-ifeq 233 5
+ifeq 233 7
