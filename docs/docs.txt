@@ -11,6 +11,9 @@ OUTPUT:
 [X] print                   : print the number at the top of the stack
 [X] printc                  : print the ASCII character decimal value at the top of the stack
 
+INPUT:
+[ ] input                   : asks for user input, and push on top of the stack
+
 CONTROL:
 [X] jump <address>          : jump to a line number
 [X] ifeq <val> <address>    : examine the top of the stack, if it's equal to <val>, continue, else, jump to <address> where <address> is a line number
