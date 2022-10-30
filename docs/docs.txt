@@ -2,6 +2,8 @@
 
 // This is a comment
 
+Stack size: 1000
+
 STACK:
 [X] push <num>              : push a number on to the stack
 [X] pop                     : pop off the first number on the stack
@@ -16,7 +18,7 @@ INPUT:
 [X] inputc                  : asks for user input (char), and push its decimal ASCII value on top of the stack
 
 CONTROL:
-[X] jmp <address>          : jump to a line number
+[X] jmp <address>           : jump to a line number
 [X] ifeq <val> <address>    : examine the top of the stack, if it's equal to <val>, continue, else, jump to <address> where <address> is a line number
 
 ARITHMETIC:
